@@ -83,7 +83,4 @@ public class ComponentePreco implements EntityBase  {
         this.itens = itens;
     }
 
-
-    /**/
-
 }
