@@ -1,0 +1,42 @@
+resources:
+  - repo: self
+queue:
+  name: Framework-Builds
+
+trigger:
+  - master
+
+variables:
+  registry: docker.totvs.io
+  project: 'supply-agro-custos-apps'
+  imageName: 'recomendacao-api'
+  tagBuild: 'master.$(Build.BuildNumber)'
+  image: $(registry)/$(project)/$(imageName)
+
+steps:
+  - task: Docker@0
+    displayName: 'Build image master'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'agro.base-docker.totvs.io'
+      action: 'Run a Docker command'
+      customCommand: 'build --no-cache --pull -t $(image):$(tagBuild) .'
+      qualifyImageName: false
+
+  - task: Docker@1
+    displayName: 'Push image TAG master'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryEndpoint: recomendacao-docker.totvs.io
+      command: 'Push an image'
+      imageName: '$(image):$(tagBuild)'
+      qualifyImageName: false
+
+  - script: "sed -i 's/PLACE_HOLDER_TAG/$(tagBuild)/g' ci.TAG.txt"
+    displayName: 'Replace PLACE_HOLDER_TAG'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: ci.TAG.txt'
+    inputs:
+      PathtoPublish: 'ci.TAG.txt'
+      ArtifactName: 'ci.TAG.txt'

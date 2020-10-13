@@ -1,0 +1,22 @@
+version: '3.4'
+services:
+    db:
+        image: postgres:11-alpine
+        container_name: postgres_compose
+        environment:
+          - POSTGRES_PASSWORD=recomendacao
+          - POSTGRES_DB=recomendacao
+        ports:
+          - "5434:5432"
+        volumes:
+          - database:/var/lib/postgresql/data
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        container_name: pgadmin_compose
+        environment:
+          - PGADMIN_DEFAULT_EMAIL=admin
+          - PGADMIN_DEFAULT_PASSWORD=admin
+        ports:
+          - "15433:80"         
+volumes:
+  database:
