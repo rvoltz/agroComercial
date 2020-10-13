@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableScheduling
 @PropertySource("classpath:application.yml")
-@EntityScan(basePackages = "com.totvs.recomendacao")
-@EnableJpaRepositories(repositoryBaseClass = ApiJpaRepositoryImpl.class, basePackages = "com.totvs.recomendacao")
+@EntityScan(basePackages = "com.totvs.agrocomercial")
+@EnableJpaRepositories(repositoryBaseClass = ApiJpaRepositoryImpl.class, basePackages = "com.totvs.agrocomercial")
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
