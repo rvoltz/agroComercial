@@ -30,5 +30,5 @@ public class ComponentePrecoController implements AbstractCrudController<Compone
     public Optional<EntityDTOAssembler<ComponentePreco, ComponentePrecoRequestDTO,ComponentePrecoResponseDTO>> assembler() {
          return Optional.of(new ComponentePrecoAssembler());
     }
-
+//Wg
 }
