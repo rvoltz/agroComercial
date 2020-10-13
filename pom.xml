@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.totvs</groupId>
-    <artifactId>recomendacao</artifactId>
+    <artifactId>agrocomercial</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Recomendação Agronômica</name>
-    <description>Totvs Agro Recomendação Agronômica</description>
+    <name>Agro Comercial</name>
+    <description>Totvs Agro Comercial</description>
 
     <dependencies>
         <!-- Dependências do Spring -->
