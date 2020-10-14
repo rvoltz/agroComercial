@@ -18,7 +18,7 @@ public class TipoFrete implements EntityBase {
     @Id
     @GeneratedValue
     @Setter
-    @Column(name="ID_FRETE")
+    @Column(name="ID")
     private UUID id;
 
     @Enumerated

@@ -21,7 +21,7 @@ public class ItemComponentePrecoDTO implements ResponseDTO {
     @Id
     @GeneratedValue
     @Setter
-    @Column(name="ID_COMPONENTE_PRECO")
+    @Column(name="ID")
     private UUID id;
     private String codigo;
     private String descricao;

@@ -20,13 +20,13 @@ public class ComponentePreco implements EntityBase  {
     @Id
     @GeneratedValue
     @Setter
-    @Column(name="ID_COMPONENTE_PRECO")
+    @Column(name="ID")
     private UUID id;
 
-    @Column(name="CD_COMPONENTE_PRECO")
+    @Column(name="CODIGO")
     private String codigo;
 
-    @Column(name="DE_COMPONENTE_PRECO")
+    @Column(name="DESCRICAO")
     private String descricao;
 
     @Column(name="CODIGO_EXTERNO")
@@ -36,7 +36,7 @@ public class ComponentePreco implements EntityBase  {
     private EnumUnidadeMedida unidadeMedida;
 
     @Column(name="MOEDA")
-    private EnumMoeda enumMoeda;
+    private EnumMoeda moeda;
 
     @Column(name="TIPO")
     private EnumTipo tipo;
@@ -45,7 +45,7 @@ public class ComponentePreco implements EntityBase  {
     private EnumTabelaPreco tabelaPreco;
 
     @Column(name="APLICACAO")
-    private EnumAplicacao enumAplicacao;
+    private EnumAplicacao aplicacao;
 
     @Column(name="HEDGE")
     private boolean hedge;
@@ -66,15 +66,15 @@ public class ComponentePreco implements EntityBase  {
     private List<ItemComponentePrecoDTO> componentes;
 
     public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao enumAplicacao, boolean hedge, boolean ativo, List<Finalidade> finalidades, List<TipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<Item> itens){
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<Finalidade> finalidades, List<TipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<Item> itens){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;
         this.unidadeMedida = unidadeMedida;
-        this.enumMoeda = enumMoeda;
+        this.moeda = enumMoeda;
         this.tipo = tipo;
         this.tabelaPreco = tabelaPreco;
-        this.enumAplicacao = enumAplicacao;
+        this.aplicacao = aplicacao;
         this.ativo = ativo;
         this.hedge = hedge;
         this.finalidades = finalidades;

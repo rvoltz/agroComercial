@@ -18,7 +18,7 @@ public class Item implements EntityBase {
     @Id
     @GeneratedValue
     @Setter
-    @Column(name="ID_ITEM")
+    @Column(name="ID")
     private UUID id;
 
     @Enumerated

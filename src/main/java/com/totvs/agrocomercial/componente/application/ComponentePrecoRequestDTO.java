@@ -19,9 +19,9 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private String descricao;
     private String codigoExterno;
     private EnumUnidadeMedida unidadeMedida;
-    private EnumMoeda enumMoeda;
+    private EnumMoeda moeda;
     private EnumTipo tipo;
-    private EnumAplicacao enumAplicacao;
+    private EnumAplicacao aplicacao;
     private EnumTabelaPreco tabelaPreco;
     private boolean hedge;
     private boolean ativo;
@@ -31,16 +31,16 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private List<Item> itens;
 
 
-    public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao enumAplicacao, boolean ativo, boolean hedge, List<Finalidade> finalidades, List<TipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<Item> itens ) {
+    public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
+                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, List<Finalidade> finalidades, List<TipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<Item> itens ) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.unidadeMedida = unidadeMedida;
-        this.enumMoeda = enumMoeda;
+        this.moeda = moeda;
         this.codigoExterno = codigoExterno;
         this.tipo = tipo;
         this.tabelaPreco = tabelaPreco;
-        this.enumAplicacao = enumAplicacao;
+        this.aplicacao = aplicacao;
         this.ativo = ativo;
         this.hedge = hedge;
         this.finalidades = finalidades;

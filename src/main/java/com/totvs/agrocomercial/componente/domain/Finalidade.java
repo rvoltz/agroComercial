@@ -18,7 +18,7 @@ public class Finalidade implements EntityBase  {
     @Id
     @GeneratedValue
     @Setter
-    @Column(name="ID_FINALIDADE")
+    @Column(name="ID")
     private UUID id;
 
     @Enumerated
