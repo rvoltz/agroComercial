@@ -53,20 +53,26 @@ public class ComponentePreco implements EntityBase  {
     @Column(name="ATIVO")
     private boolean ativo;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Item> itens;
+    @ElementCollection
+    @Column(name="item_id")
+    @CollectionTable(name = "componente_preco_itens", joinColumns = @JoinColumn( name = "componente_preco_id"))
+    private List<EnumItem> itens;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Finalidade> finalidades;
+    @ElementCollection
+    @Column(name="finalidades_id")
+    @CollectionTable(name = "componente_preco_finalidades", joinColumns = @JoinColumn( name = "componente_preco_id"))
+    private List<EnumFinalidade> finalidades;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<TipoFrete> tiposFrete;
+    @ElementCollection
+    @Column(name="tipo_frete_id")
+    @CollectionTable(name = "componente_preco_tipo_fretes", joinColumns = @JoinColumn( name = "componente_preco_id"))
+    private List<EnumTipoFrete> tiposFrete;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<ItemComponentePrecoDTO> componentes;
 
     public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<Finalidade> finalidades, List<TipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<Item> itens){
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<EnumItem> itens){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;

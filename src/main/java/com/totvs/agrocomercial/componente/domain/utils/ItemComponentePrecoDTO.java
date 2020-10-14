@@ -1,5 +1,6 @@
 package com.totvs.agrocomercial.componente.domain.utils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.totvs.agrocomercial.commons.base.application.ResponseDTO;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,7 +24,9 @@ public class ItemComponentePrecoDTO implements ResponseDTO {
     @Setter
     @Column(name="ID")
     private UUID id;
+    @JsonIgnore
     private String codigo;
+    @JsonIgnore
     private String descricao;
 
     public ItemComponentePrecoDTO(UUID id, String codigo, String descricao) {
