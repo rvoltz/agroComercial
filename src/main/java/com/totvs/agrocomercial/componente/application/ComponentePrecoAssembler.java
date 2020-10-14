@@ -14,12 +14,16 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
     //private final ComponenteMapper componenteMapper = ComponenteMapper.INSTANCE;
 
 
+    public ComponentePrecoAssembler() {
+        super();
+    }
+
     @Override
     public ComponentePrecoResponseDTO fromEntity(ComponentePreco entity) {
         //System.out.println(componenteMapper.toDTO(entity));
         return new ComponentePrecoResponseDTO(entity.getId(), entity.getCodigo(), entity.getDescricao(),
                 entity.getUnidadeMedida(), entity.getMoeda(),
-                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo());
+                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete());
     }
 
     @Override
