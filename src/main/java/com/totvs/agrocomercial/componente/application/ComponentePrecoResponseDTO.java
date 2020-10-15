@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -26,13 +27,13 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
     private EnumAplicacao aplicacao;
     private boolean hedge;
     private boolean ativo;
-    private List<EnumItem> itens;
-    private List<EnumFinalidade> finalidades;
-    private List<EnumTipoFrete> tiposfrete;
+    private Set<EnumItem> itens;
+    private Set<EnumFinalidade> finalidades;
+    private Set<EnumTipoFrete> tiposfrete;
     private List<ItemComponentePrecoDTO> idsComponentes;
 
     public ComponentePrecoResponseDTO(UUID id, String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumItem> itens, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<ComponentePreco> componentes) {
+                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<EnumItem> itens, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, List<ComponentePreco> componentes) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;

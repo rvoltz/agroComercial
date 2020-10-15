@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @EqualsAndHashCode(of = "codigo")
@@ -23,13 +24,13 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private EnumTabelaPreco tabelaPreco;
     private boolean hedge;
     private boolean ativo;
-    private List<EnumFinalidade> finalidades;
-    private List<EnumTipoFrete> tiposFrete;
+    private Set<EnumFinalidade> finalidades;
+    private Set<EnumTipoFrete> tiposFrete;
     private List<ItemComponentePrecoDTO> idsComponentes;
-    private List<EnumItem> itens;
+    private Set<EnumItem> itens;
 
     public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponentes ) {
+                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, Set<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponentes ) {
 
         this.codigo = codigo;
         this.descricao = descricao;

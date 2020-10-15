@@ -5,9 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.totvs.agrocomercial.commons.base.domain.EntityBase;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -55,20 +58,20 @@ public class ComponentePreco implements EntityBase  {
     @Column(name="ATIVO")
     private boolean ativo;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name="item_id")
     @CollectionTable(name = "componente_preco_itens", joinColumns = @JoinColumn( name = "componente_preco_id"))
-    private List<EnumItem> itens;
+    private Set<EnumItem> itens;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name="finalidades_id")
     @CollectionTable(name = "componente_preco_finalidades", joinColumns = @JoinColumn( name = "componente_preco_id"))
-    private List<EnumFinalidade> finalidades;
+    private Set<EnumFinalidade> finalidades;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name="tipo_frete_id")
-    @CollectionTable(name = "componente_preco_tipo_fretes", joinColumns = @JoinColumn( name = "componente_preco_id"))
-    private List<EnumTipoFrete> tiposFrete;
+    @CollectionTable(name = "componente_preco_tipo_fretes", joinColumns = @JoinColumn( name = "componente_preco_id") )
+    private Set<EnumTipoFrete> tiposFrete;
 
     @JsonIgnore
     @ManyToMany
@@ -82,12 +85,8 @@ public class ComponentePreco implements EntityBase  {
     @Transient
     private List<ItemComponentePrecoDTO> idsComponente;
 
-    public ComponentePreco(String codigo, String descricao, String codigoExterno,
-                           EnumUnidadeMedida unidadeMedida,
-                           EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo,
-                           List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens,
-                           List<ItemComponentePrecoDTO> idsComponente ){
+    public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, Set<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponente ){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;
