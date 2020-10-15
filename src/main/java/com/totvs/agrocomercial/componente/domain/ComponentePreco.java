@@ -1,5 +1,7 @@
 package com.totvs.agrocomercial.componente.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.totvs.agrocomercial.commons.base.domain.EntityBase;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.*;
@@ -68,11 +70,20 @@ public class ComponentePreco implements EntityBase  {
     @CollectionTable(name = "componente_preco_tipo_fretes", joinColumns = @JoinColumn( name = "componente_preco_id"))
     private List<EnumTipoFrete> tiposFrete;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<ItemComponentePrecoDTO> componentes;
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name="componente_preco_componentes", joinColumns=
+            {@JoinColumn(name="componente_preco_id")}, inverseJoinColumns=
+            {@JoinColumn(name="componentes_id")})
+    @Setter
+    @Column(name="componentes_id")
+    private List<ComponentePreco> componentes;
+
+    @Transient
+    private List<ItemComponentePrecoDTO> idsComponente;
 
     public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<EnumItem> itens){
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponente ){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;
@@ -85,8 +96,8 @@ public class ComponentePreco implements EntityBase  {
         this.hedge = hedge;
         this.finalidades = finalidades;
         this.tiposFrete = tiposFrete;
-        this.componentes = componentes;
         this.itens = itens;
+        this.idsComponente = idsComponente;
     }
 
 }

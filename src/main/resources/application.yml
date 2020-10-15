@@ -6,7 +6,7 @@ spring:
     password: admin
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: false
+    generate-ddl: true
     hibernate:
       ddl-auto: none
     properties:
@@ -16,7 +16,7 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
   flyway:
-    enabled: true
+    enabled: false
     baselineOnMigrate: true
   main:
     allow-bean-definition-overriding: true

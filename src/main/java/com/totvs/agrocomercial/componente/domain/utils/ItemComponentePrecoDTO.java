@@ -2,10 +2,8 @@ package com.totvs.agrocomercial.componente.domain.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.totvs.agrocomercial.commons.base.application.ResponseDTO;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.totvs.agrocomercial.commons.base.domain.EntityBase;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +13,7 @@ import java.util.UUID;
 
 @Getter
 @EqualsAndHashCode(of = "id")
+@NoArgsConstructor
 @ToString
 @Entity
 public class ItemComponentePrecoDTO implements ResponseDTO {
@@ -24,9 +23,7 @@ public class ItemComponentePrecoDTO implements ResponseDTO {
     @Setter
     @Column(name="ID")
     private UUID id;
-    @JsonIgnore
     private String codigo;
-    @JsonIgnore
     private String descricao;
 
     public ItemComponentePrecoDTO(UUID id, String codigo, String descricao) {

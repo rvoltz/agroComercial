@@ -1,6 +1,7 @@
 package com.totvs.agrocomercial.componente.application;
 
 import com.totvs.agrocomercial.commons.base.application.ResponseDTO;
+import com.totvs.agrocomercial.componente.domain.ComponentePreco;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,9 +28,10 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
     private List<EnumItem> itens;
     private List<EnumFinalidade> finalidades;
     private List<EnumTipoFrete> tiposfrete;
+    private List<ComponentePreco> componentes;
 
     public ComponentePrecoResponseDTO(UUID id, String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumItem> itens, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete) {
+                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumItem> itens, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<ComponentePreco> componentes) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -43,6 +45,7 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
         this.itens = itens;
         this.finalidades = finalidades;
         this.tiposfrete = tiposFrete;
+        this.componentes = componentes;
     }
 
 }

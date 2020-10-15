@@ -1,6 +1,7 @@
 package com.totvs.agrocomercial.componente.application;
 
 import com.totvs.agrocomercial.commons.base.application.RequestDTO;
+import com.totvs.agrocomercial.componente.domain.ComponentePreco;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,11 +25,11 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private boolean ativo;
     private List<EnumFinalidade> finalidades;
     private List<EnumTipoFrete> tiposFrete;
-    private List<ItemComponentePrecoDTO> componentes;
+    private List<ItemComponentePrecoDTO> idsComponentes;
     private List<EnumItem> itens;
 
     public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<ItemComponentePrecoDTO> componentes, List<EnumItem> itens ) {
+                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponentes ) {
 
         this.codigo = codigo;
         this.descricao = descricao;
@@ -42,7 +43,7 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
         this.hedge = hedge;
         this.finalidades = finalidades;
         this.tiposFrete = tiposFrete;
-        this.componentes = componentes;
+        this.idsComponentes = idsComponentes;
         this.itens = itens;
     }
 

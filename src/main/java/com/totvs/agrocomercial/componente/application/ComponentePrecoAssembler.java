@@ -23,14 +23,14 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
         //System.out.println(componenteMapper.toDTO(entity));
         return new ComponentePrecoResponseDTO(entity.getId(), entity.getCodigo(), entity.getDescricao(),
                 entity.getUnidadeMedida(), entity.getMoeda(),
-                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete());
+                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete(), entity.getComponentes());
     }
 
     @Override
     public ComponentePreco fromDTO(ComponentePrecoRequestDTO dto) {
         //System.out.println(componenteMapper.toModel(dto));
         return new ComponentePreco(dto.getCodigo(), dto.getDescricao(), dto.getCodigoExterno(), dto.getUnidadeMedida(), dto.getMoeda(),
-                dto.getTipo(), dto.getTabelaPreco(), dto.getAplicacao(), dto.isHedge(), dto.isAtivo(), dto.getFinalidades(), dto.getTiposFrete(), dto.getComponentes(), dto.getItens());
+                dto.getTipo(), dto.getTabelaPreco(), dto.getAplicacao(), dto.isHedge(), dto.isAtivo(), dto.getFinalidades(), dto.getTiposFrete(), dto.getItens(), dto.getIdsComponentes());
 
     }
 }
