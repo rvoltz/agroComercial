@@ -82,8 +82,12 @@ public class ComponentePreco implements EntityBase  {
     @Transient
     private List<ItemComponentePrecoDTO> idsComponente;
 
-    public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponente ){
+    public ComponentePreco(String codigo, String descricao, String codigoExterno,
+                           EnumUnidadeMedida unidadeMedida,
+                           EnumMoeda enumMoeda,
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo,
+                           List<EnumFinalidade> finalidades, List<EnumTipoFrete> tiposFrete, List<EnumItem> itens,
+                           List<ItemComponentePrecoDTO> idsComponente ){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;
