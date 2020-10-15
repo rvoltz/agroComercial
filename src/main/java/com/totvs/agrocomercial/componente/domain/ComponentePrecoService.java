@@ -37,7 +37,7 @@ public class ComponentePrecoService extends SyncEntityService<ComponentePreco> {
 
         for (ItemComponentePrecoDTO item : itemDTO) {
             Optional<ComponentePreco> opn = repository.findById(item.getId());
-            listaComponente.add(opn.get());
+            listaComponente.add(opn.orElseThrow());
         }
         componentePreco.setComponentes(listaComponente);
     }
