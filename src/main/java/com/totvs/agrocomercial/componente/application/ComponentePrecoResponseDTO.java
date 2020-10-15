@@ -3,9 +3,7 @@ package com.totvs.agrocomercial.componente.application;
 import com.totvs.agrocomercial.commons.base.application.ResponseDTO;
 import com.totvs.agrocomercial.componente.domain.ComponentePreco;
 import com.totvs.agrocomercial.componente.domain.utils.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +13,7 @@ import java.util.UUID;
 @Getter
 @EqualsAndHashCode(of = "id")
 @ToString
+@NoArgsConstructor
 public class ComponentePrecoResponseDTO implements ResponseDTO {
 
     private UUID id;
