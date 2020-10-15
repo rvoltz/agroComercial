@@ -1,6 +1,6 @@
 package com.totvs.agrocomercial.componente.domain.utils;
 
-public enum EnumAplicacao {
+public enum EnumAplicacao  {
 
     COMPRA,
     VENDA,
