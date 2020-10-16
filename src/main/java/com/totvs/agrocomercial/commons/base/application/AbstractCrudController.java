@@ -83,8 +83,16 @@ public interface AbstractCrudController<ENTITY extends EntityBase, REQUEST exten
     @DefaultResponseDocumentation
     @ApiOperation("Modify an existing item")
     default ResponseEntity<RESPONSE> update(@PathVariable String id, @RequestBody REQUEST field) {
+        System.out.println("---------------------------------------------");
+        System.out.println("Requisição " + field.toString());
         ENTITY entity = entityFromDTO(field);
+        System.out.println("---------------------------------------------");
+        System.out.println("entityFromDTO" + entity.toString());
+
         ENTITY modified = service().update(UUID.fromString(id), entity);
+        System.out.println("---------------------------------------------");
+        System.out.println("Pós-update" + modified.toString());
+        System.out.println("---------------------------------------------");
         //RESPONSE dto = dtoFromEntity(modified);
         return ResponseEntity.ok().build();
     }
