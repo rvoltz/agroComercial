@@ -16,10 +16,11 @@ public class PostgresSQLTestsConfiguration {
     private static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11-alpine");
 
     static {
-        postgreSQLContainer.withDatabaseName("recomendacao");
+        postgreSQLContainer.withDatabaseName("agro");
         postgreSQLContainer.withUsername("postgres");
-        postgreSQLContainer.withPassword("recomendacao");
+        postgreSQLContainer.withPassword("admin");
         postgreSQLContainer.start();
+
     }
 
     @Bean
@@ -51,4 +52,5 @@ public class PostgresSQLTestsConfiguration {
     public String getPostgresUrl() {
         return postgreSQLContainer.getJdbcUrl();
     }
+
 }

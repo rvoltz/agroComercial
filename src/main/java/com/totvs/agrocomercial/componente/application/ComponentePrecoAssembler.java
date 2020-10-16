@@ -22,7 +22,7 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
 
         return new ComponentePrecoResponseDTO(entity.getId(), entity.getCodigo(), entity.getDescricao(),
                 entity.getUnidadeMedida(), entity.getMoeda(),
-                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete(), entity.getComponentes());
+                entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete(), entity.getComponentes(), entity.getCodigoExterno());
     }
 
     @Override
