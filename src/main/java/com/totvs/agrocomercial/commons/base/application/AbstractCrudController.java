@@ -85,7 +85,8 @@ public interface AbstractCrudController<ENTITY extends EntityBase, REQUEST exten
     default ResponseEntity<RESPONSE> update(@PathVariable String id, @RequestBody REQUEST field) {
         ENTITY entity = entityFromDTO(field);
         ENTITY modified = service().update(UUID.fromString(id), entity);
-        return ResponseEntity.ok(dtoFromEntity(modified));
+        //RESPONSE dto = dtoFromEntity(modified);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(path = "/{id}")

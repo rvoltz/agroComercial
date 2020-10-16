@@ -16,8 +16,8 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
 
     @Override
     public ComponentePrecoResponseDTO fromEntity(ComponentePreco entity) {
-        ComponentePrecoResponseDTO componentePrecoResponseDTO2 = ComponenteMapper.INSTANCE.toDTO(entity);
-        System.out.println(componentePrecoResponseDTO2.toString());
+//        ComponentePrecoResponseDTO componentePrecoResponseDTO2 = ComponenteMapper.INSTANCE.toDTO(entity);
+//        System.out.println(componentePrecoResponseDTO2.toString());
         //return componentePrecoResponseDTO2;
 
         return new ComponentePrecoResponseDTO(entity.getId(), entity.getCodigo(), entity.getDescricao(),
@@ -27,8 +27,8 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
 
     @Override
     public ComponentePreco fromDTO(ComponentePrecoRequestDTO dto) {
-        ComponentePreco componentePreco2 = ComponenteMapper.INSTANCE.toModel(dto);
-        System.out.println(componentePreco2.toString());
+//        ComponentePreco componentePreco2 = ComponenteMapper.INSTANCE.toModel(dto);
+//        System.out.println(componentePreco2.toString());
 //        return componentePreco2;
 
         return new ComponentePreco(dto.getCodigo(), dto.getDescricao(), dto.getCodigoExterno(), dto.getUnidadeMedida(), dto.getMoeda(),
