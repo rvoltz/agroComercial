@@ -10,17 +10,16 @@ import java.util.UUID;
 
 public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePreco, ComponentePrecoRequestDTO, ComponentePrecoResponseDTO> {
 
-    //@Autowired
-    //private final ComponenteMapper componenteMapper = ComponenteMapper.INSTANCE;
-
-
     public ComponentePrecoAssembler() {
         super();
     }
 
     @Override
     public ComponentePrecoResponseDTO fromEntity(ComponentePreco entity) {
-        //System.out.println(componenteMapper.toDTO(entity));
+        ComponentePrecoResponseDTO componentePrecoResponseDTO2 = ComponenteMapper.INSTANCE.toDTO(entity);
+        System.out.println(componentePrecoResponseDTO2.toString());
+        //return componentePrecoResponseDTO2;
+
         return new ComponentePrecoResponseDTO(entity.getId(), entity.getCodigo(), entity.getDescricao(),
                 entity.getUnidadeMedida(), entity.getMoeda(),
                 entity.getTipo(), entity.getTabelaPreco(), entity.getAplicacao(), entity.isHedge(), entity.isAtivo(), entity.getItens(), entity.getFinalidades(), entity.getTiposFrete(), entity.getComponentes());
@@ -28,7 +27,10 @@ public class ComponentePrecoAssembler implements EntityDTOAssembler<ComponentePr
 
     @Override
     public ComponentePreco fromDTO(ComponentePrecoRequestDTO dto) {
-        //System.out.println(componenteMapper.toModel(dto));
+        ComponentePreco componentePreco2 = ComponenteMapper.INSTANCE.toModel(dto);
+        System.out.println(componentePreco2.toString());
+//        return componentePreco2;
+
         return new ComponentePreco(dto.getCodigo(), dto.getDescricao(), dto.getCodigoExterno(), dto.getUnidadeMedida(), dto.getMoeda(),
                 dto.getTipo(), dto.getTabelaPreco(), dto.getAplicacao(), dto.isHedge(), dto.isAtivo(), dto.getFinalidades(), dto.getTiposFrete(), dto.getItens(), dto.getIdsComponentes());
 
