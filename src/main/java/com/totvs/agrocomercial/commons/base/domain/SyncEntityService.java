@@ -103,6 +103,8 @@ public abstract class SyncEntityService<T extends EntityBase> implements IServic
 
         entity.setId(oldEntity.getId());
 
+        beforeSave(entity);
+
         entity = repository.save(entity);
 
         afterUpdate(entity);
