@@ -92,10 +92,11 @@ public class ComponentePreco implements EntityBase  {
     private Set<ComponentePreco> componentes;
 
     @Transient
-    private Set<ItemComponentePrecoDTO> idsComponente;
+    private Set<ItemComponentePrecoDTO> idsComponentes;
 
     public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<Item> itens, Set<ItemComponentePrecoDTO> idsComponente ){
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<Item> itens,
+                           Set<ItemComponentePrecoDTO> idsComponentes ){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;
@@ -109,7 +110,7 @@ public class ComponentePreco implements EntityBase  {
         this.finalidades = finalidades;
         this.tiposFrete = tiposFrete;
         this.itens = itens;
-        this.idsComponente = idsComponente;
+        this.idsComponentes = idsComponentes;
     }
 
 }
