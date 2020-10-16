@@ -58,20 +58,29 @@ public class ComponentePreco implements EntityBase  {
     @Column(name="ATIVO")
     private boolean ativo;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="componente_preco_itens", joinColumns=
+            {@JoinColumn(name="componente_preco_id")}, inverseJoinColumns=
+            {@JoinColumn(name="item_id")})
+    @Setter
     @Column(name="item_id")
-    @CollectionTable(name = "componente_preco_itens", joinColumns = @JoinColumn( name = "componente_preco_id"))
-    private Set<EnumItem> itens;
+    private Set<Item> itens;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name="finalidades_id")
-    @CollectionTable(name = "componente_preco_finalidades", joinColumns = @JoinColumn( name = "componente_preco_id"))
-    private Set<EnumFinalidade> finalidades;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="componente_preco_finalidades", joinColumns=
+            {@JoinColumn(name="componente_preco_id")}, inverseJoinColumns=
+            {@JoinColumn(name="finalidade_id")})
+    @Setter
+    @Column(name="finalidade_id")
+    private Set<Finalidade> finalidades;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name="tipo_frete_id")
-    @CollectionTable(name = "componente_preco_tipo_fretes", joinColumns = @JoinColumn( name = "componente_preco_id") )
-    private Set<EnumTipoFrete> tiposFrete;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="componente_preco_tipos_frete", joinColumns=
+            {@JoinColumn(name="componente_preco_id")}, inverseJoinColumns=
+            {@JoinColumn(name="tipos_frete_id")})
+    @Setter
+    @Column(name="tipos_frete_id")
+    private Set<TiposFrete> tiposFrete;
 
     @JsonIgnore
     @ManyToMany
@@ -80,13 +89,13 @@ public class ComponentePreco implements EntityBase  {
             {@JoinColumn(name="componentes_id")})
     @Setter
     @Column(name="componentes_id")
-    private List<ComponentePreco> componentes;
+    private Set<ComponentePreco> componentes;
 
     @Transient
-    private List<ItemComponentePrecoDTO> idsComponente;
+    private Set<ItemComponentePrecoDTO> idsComponente;
 
     public ComponentePreco(String codigo, String descricao, String codigoExterno, EnumUnidadeMedida unidadeMedida, EnumMoeda enumMoeda,
-                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, Set<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponente ){
+                           EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<Item> itens, Set<ItemComponentePrecoDTO> idsComponente ){
         this.codigo = codigo;
         this.descricao = descricao;
         this.codigoExterno = codigoExterno;

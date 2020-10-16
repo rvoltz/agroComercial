@@ -2,6 +2,9 @@ package com.totvs.agrocomercial.componente.application;
 
 import com.totvs.agrocomercial.commons.base.application.RequestDTO;
 import com.totvs.agrocomercial.componente.domain.ComponentePreco;
+import com.totvs.agrocomercial.componente.domain.Finalidade;
+import com.totvs.agrocomercial.componente.domain.Item;
+import com.totvs.agrocomercial.componente.domain.TiposFrete;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,13 +27,13 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private EnumTabelaPreco tabelaPreco;
     private boolean hedge;
     private boolean ativo;
-    private Set<EnumFinalidade> finalidades;
-    private Set<EnumTipoFrete> tiposFrete;
-    private List<ItemComponentePrecoDTO> idsComponentes;
-    private Set<EnumItem> itens;
+    private Set<Finalidade> finalidades;
+    private Set<TiposFrete> tiposFrete;
+    private Set<ItemComponentePrecoDTO> idsComponentes;
+    private Set<Item> itens;
 
     public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, Set<EnumItem> itens, List<ItemComponentePrecoDTO> idsComponentes ) {
+                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<Item> itens, Set<ItemComponentePrecoDTO> idsComponentes ) {
 
         this.codigo = codigo;
         this.descricao = descricao;

@@ -2,13 +2,15 @@ package com.totvs.agrocomercial.componente.application;
 
 import com.totvs.agrocomercial.commons.base.application.ResponseDTO;
 import com.totvs.agrocomercial.componente.domain.ComponentePreco;
+import com.totvs.agrocomercial.componente.domain.Finalidade;
+import com.totvs.agrocomercial.componente.domain.Item;
+import com.totvs.agrocomercial.componente.domain.TiposFrete;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -27,13 +29,13 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
     private EnumAplicacao aplicacao;
     private boolean hedge;
     private boolean ativo;
-    private Set<EnumItem> itens;
-    private Set<EnumFinalidade> finalidades;
-    private Set<EnumTipoFrete> tiposfrete;
-    private List<ItemComponentePrecoDTO> idsComponentes;
+    private Set<Item> itens;
+    private Set<Finalidade> finalidades;
+    private Set<TiposFrete> tiposfrete;
+    private Set<ItemComponentePrecoDTO> idsComponentes;
 
     public ComponentePrecoResponseDTO(UUID id, String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<EnumItem> itens, Set<EnumFinalidade> finalidades, Set<EnumTipoFrete> tiposFrete, List<ComponentePreco> componentes) {
+                                      EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean hedge, boolean ativo, Set<Item> itens, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<ComponentePreco> componentes) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -48,7 +50,7 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
         this.finalidades = finalidades;
         this.tiposfrete = tiposFrete;
 
-        List<ItemComponentePrecoDTO> idsDTO = new ArrayList<>();
+        Set<ItemComponentePrecoDTO> idsDTO = new HashSet<ItemComponentePrecoDTO>();
         for (ComponentePreco componente : componentes){
             idsDTO.add(new ItemComponentePrecoDTO(componente.getId(), componente.getCodigo(),componente.getDescricao()));
         }

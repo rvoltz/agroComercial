@@ -9,9 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Scope("prototype")
@@ -32,8 +30,8 @@ public class ComponentePrecoService extends SyncEntityService<ComponentePreco> {
 
     @Override
     public void beforeSave(ComponentePreco componentePreco) {
-        List<ItemComponentePrecoDTO> itemDTO = componentePreco.getIdsComponente();
-        List<ComponentePreco> listaComponente = new ArrayList<>();
+        Set<ItemComponentePrecoDTO> itemDTO = componentePreco.getIdsComponente();
+        Set<ComponentePreco> listaComponente = new HashSet<ComponentePreco>();
 
         for (ItemComponentePrecoDTO item : itemDTO) {
             Optional<ComponentePreco> opn = repository.findById(item.getId());
