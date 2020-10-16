@@ -14,6 +14,7 @@ import java.util.UUID;
 @Getter
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class ItemComponentePrecoDTO implements ResponseDTO {
 
@@ -21,13 +22,9 @@ public class ItemComponentePrecoDTO implements ResponseDTO {
     @GeneratedValue
     @Setter
     private UUID id;
+
     private String codigo;
     private String descricao;
 
-    public ItemComponentePrecoDTO(UUID id, String codigo, String descricao) {
-        this.id = id;
-        this.codigo = codigo;
-        this.descricao = descricao;
-    }
 
 }

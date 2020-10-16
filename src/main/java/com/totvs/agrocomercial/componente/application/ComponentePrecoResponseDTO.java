@@ -30,7 +30,7 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
     private boolean ativo;
     private Set<Item> itens;
     private Set<Finalidade> finalidades;
-    private Set<TiposFrete> tiposfrete;
+    private Set<TiposFrete> tiposFrete;
     private Set<ItemComponentePrecoDTO> idsComponentes;
 
     public ComponentePrecoResponseDTO(UUID id, String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
@@ -47,7 +47,7 @@ public class ComponentePrecoResponseDTO implements ResponseDTO {
         this.hedge = hedge;
         this.itens = itens;
         this.finalidades = finalidades;
-        this.tiposfrete = tiposFrete;
+        this.tiposFrete = tiposFrete;
 
         Set<ItemComponentePrecoDTO> idsDTO = new HashSet<ItemComponentePrecoDTO>();
         for (ComponentePreco componente : componentes){

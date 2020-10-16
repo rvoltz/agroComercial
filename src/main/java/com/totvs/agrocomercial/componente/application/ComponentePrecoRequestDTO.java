@@ -34,8 +34,20 @@ public class ComponentePrecoRequestDTO implements RequestDTO {
     private Set<ItemComponentePrecoDTO> idsComponentes;
     private Set<Item> itens;
 
-    public ComponentePrecoRequestDTO(String codigo, String descricao, EnumUnidadeMedida unidadeMedida, EnumMoeda moeda,
-                                     String codigoExterno, EnumTipo tipo, EnumTabelaPreco tabelaPreco, EnumAplicacao aplicacao, boolean ativo, boolean hedge, Set<Finalidade> finalidades, Set<TiposFrete> tiposFrete, Set<Item> itens, Set<ItemComponentePrecoDTO> idsComponentes ) {
+    public ComponentePrecoRequestDTO(String codigo,
+                                     String descricao,
+                                     EnumUnidadeMedida unidadeMedida,
+                                     EnumMoeda moeda,
+                                     String codigoExterno,
+                                     EnumTipo tipo,
+                                     EnumTabelaPreco tabelaPreco,
+                                     EnumAplicacao aplicacao,
+                                     boolean ativo,
+                                     boolean hedge,
+                                     Set<Finalidade> finalidades,
+                                     Set<TiposFrete> tiposFrete,
+                                     Set<Item> itens,
+                                     Set<ItemComponentePrecoDTO> idsComponentes ) {
 
         this.codigo = codigo;
         this.descricao = descricao;

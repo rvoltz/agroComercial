@@ -30,7 +30,7 @@ public class ComponentePrecoService extends SyncEntityService<ComponentePreco> {
 
     @Override
     public void beforeSave(ComponentePreco componentePreco) {
-        Set<ItemComponentePrecoDTO> itemDTO = componentePreco.getIdsComponente();
+        Set<ItemComponentePrecoDTO> itemDTO = componentePreco.getIdsComponentes();
         Set<ComponentePreco> listaComponente = new HashSet<ComponentePreco>();
 
         for (ItemComponentePrecoDTO item : itemDTO) {
