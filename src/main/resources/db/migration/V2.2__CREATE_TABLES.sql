@@ -1,6 +1,3 @@
-
-
-
 -- Table: public.componente_preco
 
 -- DROP TABLE public.componente_preco;
@@ -20,29 +17,13 @@ CREATE TABLE IF NOT EXISTS public.componente_preco
     unidade_medida integer,
     CONSTRAINT componente_preco_pkey PRIMARY KEY (id)
 )
-
+WITH (
+    OIDS = FALSE
+)
 TABLESPACE pg_default;
 
 ALTER TABLE public.componente_preco
     OWNER to postgres;
-
--- Table: public.item_componente_precodto
-
--- DROP TABLE public.item_componente_precodto;
-
-CREATE TABLE IF NOT EXISTS public.item_componente_precodto
-(
-    id uuid NOT NULL,
-    codigo character varying(255) COLLATE pg_catalog."default",
-    descricao character varying(255) COLLATE pg_catalog."default",
-    CONSTRAINT item_componente_precodto_pkey PRIMARY KEY (id)
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE public.item_componente_precodto
-    OWNER to postgres;
-
 
 -- Table: public.componente_preco_componentes
 
@@ -52,9 +33,8 @@ CREATE TABLE IF NOT EXISTS public.componente_preco_componentes
 (
     componente_preco_id uuid NOT NULL,
     componentes_id uuid NOT NULL,
-    CONSTRAINT uk_ijujbewf9ygcjh5mc3x10wspt UNIQUE (componentes_id),
-    CONSTRAINT fki13dj5jomaqxmyfeq0x1b7479 FOREIGN KEY (componentes_id)
-        REFERENCES public.item_componente_precodto (id) MATCH SIMPLE
+    CONSTRAINT fkgdvgsm0bsn9i5f0uxbwxor2vs FOREIGN KEY (componentes_id)
+        REFERENCES public.componente_preco (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT fkm7nyu307uypb00f8gjah4liu5 FOREIGN KEY (componente_preco_id)
@@ -62,130 +42,92 @@ CREATE TABLE IF NOT EXISTS public.componente_preco_componentes
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
-
+WITH (
+    OIDS = FALSE
+)
 TABLESPACE pg_default;
 
 ALTER TABLE public.componente_preco_componentes
     OWNER to postgres;
 
+-- Table: public.componente_preco_tipos_frete
 
+-- DROP TABLE public.componente_preco_tipos_frete;
 
-
--- Table: public.componente_preco_tipo_fretes
-
--- DROP TABLE public.componente_preco_tipo_fretes;
-
-CREATE TABLE IF NOT EXISTS public.componente_preco_tipo_fretes
+CREATE TABLE IF NOT EXISTS public.componente_preco_tipos_frete
 (
     componente_preco_id uuid NOT NULL,
-    tipo_frete_id integer,
-    CONSTRAINT fkehtdl28j1owijqyaywur803ic FOREIGN KEY (componente_preco_id)
+    tipos_frete_id uuid NOT NULL,
+    CONSTRAINT componente_preco_tipos_frete_pkey PRIMARY KEY (componente_preco_id, tipos_frete_id),
+    CONSTRAINT fk8l47esyejyviv9p4psedjwrqu FOREIGN KEY (componente_preco_id)
         REFERENCES public.componente_preco (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE public.componente_preco_tipo_fretes
-    OWNER to postgres;
-
-DROP TABLE public.componente_preco_tipo_fretes;
-
-
-CREATE TABLE public.componente_preco_tipo_fretes
-(
-    componente_preco_id uuid NOT NULL,
-    tipo_frete_id integer NOT NULL,
-    CONSTRAINT uk_componente_preco_tipo_fretes UNIQUE (componente_preco_id, tipo_frete_id),
-    CONSTRAINT fk_componente_preco_tipo_fretes FOREIGN KEY (componente_preco_id)
-        REFERENCES public.componente_preco (id) MATCH SIMPLE
+        ON DELETE NO ACTION,
+    CONSTRAINT fkrrdbynmrk8yo0u90clylu38oa FOREIGN KEY (tipos_frete_id)
+        REFERENCES public.tipos_frete (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
 WITH (
     OIDS = FALSE
-);
-
-
-
-
--- Table: public.componente_preco_itens
-
--- DROP TABLE public.componente_preco_itens;
-
-CREATE TABLE IF NOT EXISTS public.componente_preco_itens
-(
-    componente_preco_id uuid NOT NULL,
-    item_id integer,
-    CONSTRAINT fkikpcabaoegow282b6tox8oxum FOREIGN KEY (componente_preco_id)
-        REFERENCES public.componente_preco (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
 )
-
 TABLESPACE pg_default;
 
-ALTER TABLE public.componente_preco_itens
+ALTER TABLE public.componente_preco_tipos_frete
     OWNER to postgres;
 
+-- Table: public.finalidade
 
--- Table: public.componente_preco_finalidades
+-- DROP TABLE public.finalidade;
 
--- DROP TABLE public.componente_preco_finalidades;
-
-CREATE TABLE IF NOT EXISTS public.componente_preco_finalidades
+CREATE TABLE IF NOT EXISTS public.finalidade
 (
-    componente_preco_id uuid NOT NULL,
-    finalidades_id integer,
-    CONSTRAINT fkpmc0ie6y95kuvofjg9y30if0d FOREIGN KEY (componente_preco_id)
-        REFERENCES public.componente_preco (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
-
-
-DROP TABLE public.componente_preco_finalidades;
-
-CREATE TABLE public.componente_preco_finalidades
-(
-    componente_preco_id uuid NOT NULL,
-    finalidades_id integer NOT NULL,
-    CONSTRAINT uk_componente_preco_finalidades UNIQUE (componente_preco_id, finalidades_id),
-    CONSTRAINT fk_componente_preco_finalidades FOREIGN KEY (componente_preco_id)
-        REFERENCES public.componente_preco (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+    id uuid NOT NULL,
+    descricao character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT finalidade_pkey PRIMARY KEY (id)
 )
 WITH (
     OIDS = FALSE
-);
+)
+TABLESPACE pg_default;
 
-ALTER TABLE public.componente_preco_finalidades
+ALTER TABLE public.finalidade
     OWNER to postgres;
 
+-- Table: public.item
 
- DROP TABLE public.componente_preco_itens;
+-- DROP TABLE public.item;
 
-CREATE TABLE public.componente_preco_itens
+CREATE TABLE IF NOT EXISTS public.item
 (
-    componente_preco_id uuid NOT NULL,
-    item_id integer NOT NULL,
-    CONSTRAINT uk_componente_preco_itens UNIQUE (componente_preco_id, item_id),
-    CONSTRAINT fk_componente_preco_itens FOREIGN KEY (componente_preco_id)
-        REFERENCES public.componente_preco (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+    id uuid NOT NULL,
+    descricao character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT item_pkey PRIMARY KEY (id)
 )
 WITH (
     OIDS = FALSE
-);
+)
+TABLESPACE pg_default;
 
+ALTER TABLE public.item
+    OWNER to postgres;
 
-ALTER TABLE public.componente_preco_itens
+-- Table: public.tipos_frete
+
+-- DROP TABLE public.tipos_frete;
+
+CREATE TABLE IF NOT EXISTS public.tipos_frete
+(
+    id uuid NOT NULL,
+    descricao character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT tipos_frete_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.tipos_frete
     OWNER to postgres;
 
 INSERT INTO FINALIDADE (ID,  DESCRICAO) VALUES('49abe010-0e29-11eb-adc1-0242ac120002', 'INDUSTRIALIZACAO' );
