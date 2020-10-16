@@ -54,6 +54,20 @@ ALTER TABLE public.componente_preco_componentes
 
 -- DROP TABLE public.componente_preco_tipos_frete;
 
+CREATE TABLE IF NOT EXISTS public.tipos_frete
+(
+    id uuid NOT NULL,
+    descricao character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT tipos_frete_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.tipos_frete
+    OWNER to postgres;
+
 CREATE TABLE IF NOT EXISTS public.componente_preco_tipos_frete
 (
     componente_preco_id uuid NOT NULL,
@@ -116,19 +130,7 @@ ALTER TABLE public.item
 
 -- DROP TABLE public.tipos_frete;
 
-CREATE TABLE IF NOT EXISTS public.tipos_frete
-(
-    id uuid NOT NULL,
-    descricao character varying(255) COLLATE pg_catalog."default",
-    CONSTRAINT tipos_frete_pkey PRIMARY KEY (id)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
 
-ALTER TABLE public.tipos_frete
-    OWNER to postgres;
 
 INSERT INTO FINALIDADE (ID,  DESCRICAO) VALUES('49abe010-0e29-11eb-adc1-0242ac120002', 'INDUSTRIALIZACAO' );
 INSERT INTO FINALIDADE (ID,  DESCRICAO) VALUES('49abe38a-0e29-11eb-adc1-0242ac120002', 'EXPORTACAO DIRETA' );
