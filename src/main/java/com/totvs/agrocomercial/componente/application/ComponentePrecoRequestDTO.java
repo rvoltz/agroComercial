@@ -8,6 +8,7 @@ import com.totvs.agrocomercial.componente.domain.TiposFrete;
 import com.totvs.agrocomercial.componente.domain.utils.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Getter
 @EqualsAndHashCode(of = "codigo")
 @ToString
+@NoArgsConstructor
 public class ComponentePrecoRequestDTO implements RequestDTO {
     private String codigo;
     private String descricao;

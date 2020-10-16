@@ -6,9 +6,7 @@ import com.totvs.agrocomercial.componente.domain.Finalidade;
 import com.totvs.agrocomercial.componente.domain.Item;
 import com.totvs.agrocomercial.componente.domain.TiposFrete;
 import com.totvs.agrocomercial.componente.domain.utils.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +15,7 @@ import java.util.UUID;
 @Getter
 @EqualsAndHashCode(of = "id")
 @ToString
+@NoArgsConstructor
 public class ComponentePrecoResponseDTO implements ResponseDTO {
 
     private UUID id;
