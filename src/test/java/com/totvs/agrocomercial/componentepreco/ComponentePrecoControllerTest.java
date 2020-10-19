@@ -81,6 +81,8 @@ public class ComponentePrecoControllerTest {
         itens.add(new Item(uidItem,"MILHO"));
     }
 
+
+
     @Test
     @DisplayName("Um componente de preço deve existir no banco de dados após ser criado.")
     public void criar(){
